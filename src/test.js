@@ -1,5 +1,5 @@
 import React from 'react';
-import {useState, useEffect} from 'react'
+import {useState} from 'react'
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { Form, Icon, Input, Button, Table, Calendar,  } from 'antd';
@@ -61,7 +61,7 @@ const dataSource = [
             }
              dispatch({type : "SUBMITACTION",
                         payload:newState})
-            dataSource.push({...all,
+            dataSource.push({...newState,
                               key})     
               key = key + 1 
               setFirstName("")
@@ -82,7 +82,8 @@ const dataSource = [
           
         </Form.Item>
         <Form.Item >
-            <Input name="lastName" onChange = {e => {setLastName(e.target.value); }} value ={lastName}
+            <Input name="lastName" onChange = {e => {setLastName(e.target.value); 
+            console.log(e.target.value , lastName)}} value ={lastName}
               prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
               placeholder="Last Name"
             />,
